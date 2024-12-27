@@ -378,6 +378,10 @@ module token_distribution::farm {
         td::change_unlock_start_ts_sec(&mut farm.td, new_start_ts_sec, clock);
     }
 
+    public fun get_unlock_per_second<T>(farm: &Farm<T>): u64 {
+        td::final_unlock_ts_sec(&farm.td)
+    }
+
     /* ================= test only ================= */
 
     #[test_only]
